@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="239.0" style="-fx-background-color: #1c87e5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXButton accessibleText="home" contentDisplay="TOP" prefHeight="80.0" prefWidth="239.0" styleClass="bu" stylesheets="@main.css" text="Home page" textFill="#fcfcfc">
+         <graphic>
+            <ImageView fitHeight="42.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/home_50px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton accessibleText="addmember" contentDisplay="TOP" prefHeight="80.0" prefWidth="239.0" styleClass="bu" stylesheets="@main.css" text="Add Member" textFill="#fcfcfc">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/add_user_male_26px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton accessibleText="addbook" contentDisplay="TOP" prefHeight="80.0" prefWidth="239.0" styleClass="bu" stylesheets="@main.css" text="Add Book" textFill="#fcfcfc">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/add_book_30px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton accessibleText="viwemember" contentDisplay="TOP" prefHeight="80.0" prefWidth="239.0" styleClass="bu" stylesheets="@main.css" text="View  Member" textFill="#eee4e4">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/find_user_male_50px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton accessibleText="viwewbook" contentDisplay="TOP" prefHeight="80.0" prefWidth="239.0" styleClass="bu" stylesheets="@main.css" text="View Book" textFill="#eee4e4">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/view_24px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton accessibleText="expir" contentDisplay="TOP" prefHeight="80.0" prefWidth="239.0" styleClass="bu" stylesheets="@main.css" text="Show books that borrow  expires today" textFill="#eee4e4">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/expired_24px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton accessibleText="all" contentDisplay="TOP" prefHeight="80.0" prefWidth="239.0" styleClass="bu" stylesheets="@main.css" text="View all borrow" textFill="#eee4e4">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/search_30px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton accessibleText="exit" contentDisplay="TOP" prefHeight="80.0" prefWidth="239.0" styleClass="bu" stylesheets="@main.css" text="Exit" textFill="#eee4e4">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/exit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
+</VBox>
