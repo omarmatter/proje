@@ -5,12 +5,14 @@
  */
 package project.display_member;
 
+import java.io.FileWriter;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -42,7 +44,7 @@ public class Display_memberController implements Initializable {
     @FXML
     private TableColumn<datamember, String> tcemail;
     Statement statement;
-
+FileWriter myWriter;
     /**
      * Initializes the controller class.
      */
@@ -54,6 +56,8 @@ public class Display_memberController implements Initializable {
                     DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/project","root","");
             
             this.statement = connection.createStatement();
+                                                myWriter = new FileWriter("filename.txt",true);
+
             // TODO
         } catch (Exception ex) {
             System.out.println(ex);
@@ -106,6 +110,12 @@ public class Display_memberController implements Initializable {
                      alert1.getGraphic().setScaleY(1);
             alert1.showAndWait();
               Display();
+              
+              
+                LocalDate date=LocalDate.now();
+                  myWriter.write("\n");
+                          myWriter.write("The member ID number "+id+" has been deleted In the history of: "+date);
+           myWriter.close();
                 } catch (SQLException ex) {
                  Alert alert1 = new Alert(Alert.AlertType.ERROR);
             alert1.setTitle("Delet member");

@@ -1,0 +1,7 @@
+
+A member with data has been added ID: 120181536 Name: omar Mobile: 0598804144 Email: iokjh In the history of: 2020-05-30
+A data owner's book has been added ID: 12123 Title: programin3 Author: hamdi Publisher: 2020-05-08 In the history of: 2020-05-30
+The member ID number 120181536 has been deleted In the history of: 2020-05-30
+The book ID number 78677 has been deleted In the history of: 2020-05-30
+The book carrying the ID number: 2 was borrowed for the member with the ID number:1 In the history of: 2020-05-30
+The process of returning a book with an ID number 2 has been completed In the history of: 2020-05-30

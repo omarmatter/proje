@@ -7,6 +7,8 @@ package project.firsr;
 
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.effects.JFXDepthManager;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -88,6 +90,9 @@ public class FirstController implements Initializable {
     private Label mobile2;
     @FXML
     private Label id1;
+    
+    
+    FileWriter myWriter;
     /**
      * Initializes the controller class.
      */
@@ -100,6 +105,7 @@ public class FirstController implements Initializable {
                     = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/project", "root", "");
 
             this.statement = connection.createStatement();
+                 myWriter = new FileWriter("filename.txt",true);
             // TODO
         } catch (Exception ex) {
             System.out.println(ex);
@@ -173,7 +179,7 @@ public class FirstController implements Initializable {
     }
 
     @FXML
-    private void borrowbook(ActionEvent event) {
+    private void borrowbook(ActionEvent event) throws IOException {
          if (memberid.getText().equals("") || id.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -192,7 +198,7 @@ public class FirstController implements Initializable {
             Optional<ButtonType> x = alert.showAndWait();
             if (x.get() == ButtonType.OK) {
                 LocalDateTime today = LocalDateTime.now();
-                LocalDateTime newtime = today.plusDays(0);
+                LocalDateTime newtime = today.plusDays(30);
                 String sql = "Insert Into borrow(bookid,memberid ,returntime) values(" + bookid + ",'" + Memberid + "','" + newtime + "')";
                 String sgl = "UPDATE databook SET isavail =false WHERE id =" + bookid;
                 try {
@@ -207,6 +213,11 @@ public class FirstController implements Initializable {
                     aler.getGraphic().setScaleX(1);
                      aler.getGraphic().setScaleY(1);
                      aler.setHeight(.5);
+                     
+                        LocalDate date=LocalDate.now();
+                    myWriter.write("\n");
+                    myWriter.write("The book carrying the ID number: "+ bookid+" was borrowed for the member with the ID number:"+ Memberid+" In the history of: "+date );
+                    myWriter.close();
                  
                     
                     aler.showAndWait();
@@ -235,7 +246,6 @@ public class FirstController implements Initializable {
         ResultSet rs;
         rs = this.statement.executeQuery(qu);
         while (rs.next()) {
-            System.out.println("rrrr");
             int BOOKID = ID;
             Timestamp time = rs.getTimestamp("da");
             int MemberID = rs.getInt("memberid");
@@ -244,7 +254,6 @@ public class FirstController implements Initializable {
               
            dataeborrow.setText( time.toString());
             datrreturne.setText(ret.toString());
-            System.out.println(year(ret.toString()));
 
             qu = "select * from databook where id =" + BOOKID;
             rs = this.statement.executeQuery(qu);
@@ -282,7 +291,7 @@ public class FirstController implements Initializable {
     }
 
     @FXML
-    private void submissionHandel(ActionEvent event) {
+    private void submissionHandel(ActionEvent event) throws IOException {
           if (!sumb) {
              Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Submission");
@@ -309,6 +318,13 @@ public class FirstController implements Initializable {
                     alert.getGraphic().setScaleX(1);
                      alert.getGraphic().setScaleY(1);
             alert.showAndWait();
+            
+            
+            
+               LocalDate date=LocalDate.now();
+                    myWriter.write("\n");
+                    myWriter.write("The process of returning a book with an ID number "+ID+" has been completed"+" In the history of: "+date );
+                    myWriter.close();
               rest();
              
         } catch (SQLException ex) {
@@ -335,17 +351,5 @@ public class FirstController implements Initializable {
                mobile2.setText("Mobile");
     }
   
-    public static String year( String Exp) {
-        long calendar = Calendar.getInstance().getTimeInMillis();
-         SimpleDateFormat sf = new SimpleDateFormat("yyy-mm-dd");
-        Date sDt3 = null;
-        try {
-            sDt3 =  (Date) sf.parse(Exp);
-        } catch (ParseException e) {
-         
-        }
-        long ld3 = sDt3.getTime();
-        System.out.println(calendar);
-        return ((ld3 - calendar) / (1000 * 60 * 60 * 24)) + "";
-    }
+   
 }

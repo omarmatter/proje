@@ -7,11 +7,14 @@ package project.add_member;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +43,7 @@ public class Add_memberController implements Initializable {
     @FXML
      private JFXButton save;
   Statement statement;
+  FileWriter myWriter;
     /**
      * Initializes the controller class.
      */
@@ -51,6 +55,8 @@ public class Add_memberController implements Initializable {
                     DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/project","root","");
             
             this.statement = connection.createStatement();
+                                    myWriter = new FileWriter("filename.txt",true);
+
             // TODO
         } catch (Exception ex) {
             System.out.println(ex);
@@ -59,7 +65,7 @@ public class Add_memberController implements Initializable {
        
 
     @FXML
-    private void saveHandel(ActionEvent event) {
+    private void saveHandel(ActionEvent event) throws IOException {
        
         try {
                
@@ -87,6 +93,11 @@ public class Add_memberController implements Initializable {
                     alert.getGraphic().setScaleX(1);
                      alert.getGraphic().setScaleY(1);
             alert.showAndWait();
+              LocalDate date=LocalDate.now();
+              
+            myWriter.write("\n");
+            myWriter.write("A member with data has been added ID: "+ID +" Name: "+Name +" Mobile: "+Mobile +" Email: "+Email+" In the history of: "+date);
+            myWriter.close();
             reset();
             
                }

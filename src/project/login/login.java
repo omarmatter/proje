@@ -30,7 +30,7 @@ public class login extends Application {
      Scene scene=new Scene(pane);
           Image image=new Image("/project/icon/Apps.png");
                 primaryStage.getIcons().add(image);
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Login");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -8,6 +8,8 @@ package project.add;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +51,7 @@ public class AddController implements Initializable {
         Statement statement;
     @FXML
     private JFXDatePicker data;
-   
+   FileWriter myWriter;
  
 
     /**
@@ -62,14 +65,15 @@ public class AddController implements Initializable {
                     DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/project","root","");
             
             this.statement = connection.createStatement();
+                        myWriter = new FileWriter("filename.txt",true);
+
             // TODO
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }    
     @FXML
-    private void saveHandel(ActionEvent event){
-        System.out.println(data.getValue());
+    private void saveHandel(ActionEvent event) throws IOException{
         try {
         if(id.getText().equals("")||title.getText().equals("")|| author.getText().equals("")||data.getValue()==null){
                 Alert alert = new Alert(AlertType.ERROR);
@@ -94,6 +98,11 @@ public class AddController implements Initializable {
                     alert.getGraphic().setScaleX(1);
                      alert.getGraphic().setScaleY(1);
             alert.showAndWait();
+             LocalDate date=LocalDate.now();
+              myWriter.write("\n");
+              myWriter.write("A data owner's book has been added ID: "+ ID+" Title: "+ Title +" Author: "+Author +" Publisher: "+ Publisher +" In the history of: "+date);
+             
+      myWriter.close();
             reset();
                  }
         } catch (SQLException ex) {

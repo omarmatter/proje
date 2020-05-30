@@ -5,6 +5,7 @@
  */
 package project.disblaybook;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -12,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -52,6 +54,7 @@ public class DisplaybookController implements Initializable {
     private TableView<databook> tableviwe;
     Statement statement;
 
+    FileWriter myWriter;
     /**
      * Initializes the controller class.
      */
@@ -61,7 +64,7 @@ public class DisplaybookController implements Initializable {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection =
                     DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/project","root","");
-            
+            myWriter = new FileWriter("filename.txt",true);
             this.statement = connection.createStatement();
             // TODO
         } catch (Exception ex) {
@@ -119,6 +122,12 @@ public class DisplaybookController implements Initializable {
                      alert1.getGraphic().setScaleY(1);
             alert1.showAndWait();
             Display();
+            
+             LocalDate date=LocalDate.now();
+           
+            myWriter.write("\n");
+              myWriter.write("The book ID number "+id+" has been deleted In the history of: "+date);
+              myWriter.close();
                 } catch (SQLException ex) {
                  Alert alert1 = new Alert(Alert.AlertType.ERROR);
             alert1.setTitle("Delet book");

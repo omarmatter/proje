@@ -154,7 +154,7 @@ public class MainController implements Initializable {
                         break;
                             case "exit":
                                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Delet book");
+            alert.setTitle("Log out");
             alert.setHeaderText(null);
             alert.setContentText("Are you sure want  exit?" );
 

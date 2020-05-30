@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -68,8 +69,8 @@ public class LoginController implements Initializable {
              if(user.getText().equals(usern) && pass.getText().equals(passw)){
                 Pane  pane = FXMLLoader.load(getClass().getResource("/project/main/newmain.fxml"));
                    Scene scene=new Scene(pane);
-                      Stage primaryStage=new Stage();
-                primaryStage.setTitle("Hello World!");
+                      Stage primaryStage=new Stage(StageStyle.TRANSPARENT);
+             
                 Image image=new Image("/project/icon/notebook.png");
                         ((Stage)user.getScene().getWindow()).close();
                 primaryStage.getIcons().add(image);
